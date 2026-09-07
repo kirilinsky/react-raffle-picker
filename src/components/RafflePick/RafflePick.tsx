@@ -50,6 +50,15 @@ export function RafflePickRoot({
     return its && its.length > 0 ? its[index] : index
   }, [])
 
+  const valueAt = useCallback(
+    (position: number): RafflePickValue => {
+      const its = itemsRef.current
+      if (its && its.length > 0) return its[position]
+      return cycleMin + position
+    },
+    [cycleMin]
+  )
+
   const valueToIndex = useCallback((value: RafflePickValue | undefined): number | undefined => {
     if (value === undefined) return undefined
     const its = itemsRef.current
@@ -195,8 +204,10 @@ export function RafflePickRoot({
       noRepeat,
       exhausted,
       remaining,
+      total: totalCandidates,
       valueRef,
       displayValue,
+      valueAt,
       subscribe,
       start: guardedStart,
       freeze,
@@ -216,7 +227,9 @@ export function RafflePickRoot({
       noRepeat,
       exhausted,
       remaining,
+      totalCandidates,
       displayValue,
+      valueAt,
       subscribe,
       guardedStart,
       freeze,

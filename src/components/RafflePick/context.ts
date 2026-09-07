@@ -20,8 +20,17 @@ export interface RaffleContextValue {
   /** Candidates left to draw. Equals the full pool size when `noRepeat` is off. */
   remaining: number
 
+  /** Size of the draw pool: item count in items mode, `max - min + 1` in numeric mode. */
+  total: number
+
   valueRef: RefObject<number>
   displayValue: (index: number) => RafflePickValue
+  /**
+   * Pool entry at a 0-based position, regardless of mode. `valueAt(0)` is the
+   * first item / `min`. Lets custom UIs enumerate the pool without knowing
+   * whether the root runs in items or numeric mode.
+   */
+  valueAt: (position: number) => RafflePickValue
 
   subscribe: (fn: (value: number) => void) => () => void
 

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useId, useState } from 'react'
 import { NAV_ITEMS } from './nav-items'
+import { TOOLS, TOOLS_HUB } from './tools/tools-nav'
 
 const githubHref = 'https://github.com/kirilinsky/react-raffle-picker'
 
@@ -51,6 +52,18 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Primary" className="ml-auto hidden items-center gap-1 min-[820px]:flex">
+          <Link
+            href={TOOLS_HUB.href}
+            aria-current={isActivePath(pathname, TOOLS_HUB.href) ? 'page' : undefined}
+            className={`mr-2 rounded-lg px-3 py-2 text-sm font-semibold transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy ${
+              isActivePath(pathname, TOOLS_HUB.href)
+                ? 'bg-burgundy text-gold-light'
+                : 'text-burgundy hover:bg-burgundy/10'
+            }`}
+          >
+            {TOOLS_HUB.label}
+          </Link>
+          <span aria-hidden="true" className="mr-2 h-5 w-px bg-line-2" />
           {NAV_ITEMS.map((item) => {
             const active = isActivePath(pathname, item.href)
 
@@ -112,6 +125,29 @@ export function SiteHeader() {
         className={`border-t border-line px-4 pb-4 pt-3 min-[820px]:hidden ${isOpen ? 'block' : 'hidden'}`}
       >
         <nav aria-label="Primary mobile" className="mx-auto grid max-w-[1240px] gap-1">
+          <p className="px-3 pb-1 pt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+            Tools
+          </p>
+          {[TOOLS_HUB, ...TOOLS].map((item) => {
+            const active = isActivePath(pathname, item.href)
+
+            return (
+              <Link
+                key={item.id}
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy ${
+                  active ? 'bg-burgundy text-gold-light' : 'text-burgundy hover:bg-burgundy/10'
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
+
+          <p className="px-3 pb-1 pt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+            Docs
+          </p>
           {NAV_ITEMS.map((item) => {
             const active = isActivePath(pathname, item.href)
 

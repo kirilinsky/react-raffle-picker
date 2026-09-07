@@ -1,3 +1,8 @@
+/**
+ * Docs track — for people integrating the package. The tools track lives in
+ * `tools/tools-nav.ts`; the header renders them as two separate groups because
+ * the two audiences share almost nothing.
+ */
 export const NAV_ITEMS = [
   { id: 'home', label: 'Home', href: '/' },
   { id: 'playground', label: 'Playground', href: '/playground' },

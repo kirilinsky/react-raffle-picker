@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import pkg from 'react-raffle-picker/package.json'
 import { Container } from './container'
+import { TOOLS } from './tools/tools-nav'
 
 const REACT_PEER = pkg.peerDependencies?.react ?? ''
 const REACT_LABEL = REACT_PEER.replace(/^>=\s*/, '') + '+'
@@ -18,6 +19,8 @@ const PACKAGE_LINKS = [
   },
 ]
 
+const TOOL_LINKS = TOOLS.map(({ label, href }) => ({ label, href }))
+
 const DEMO_LINKS = [
   { label: 'Playground', href: '/playground' },
   { label: 'Use cases', href: '/use-cases' },
@@ -26,9 +29,9 @@ const DEMO_LINKS = [
 ]
 
 const DOCS_LINKS = [
-  { label: 'API reference', href: '/docs/api' },
-  { label: 'Countdown', href: '/docs/countdown' },
-  { label: 'Recipes', href: '/docs/recipes' },
+  { label: 'API reference', href: '/api' },
+  { label: 'Countdown', href: '/countdown' },
+  { label: 'Use cases', href: '/use-cases' },
 ]
 
 function ColHead({ children }: { children: React.ReactNode }) {
@@ -39,7 +42,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-line bg-bg-2 py-10 text-sm text-ink-2">
       <Container>
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
           <div>
             <Link
               href="/"
@@ -55,8 +58,8 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="max-w-[40ch] leading-relaxed">
-              Tiny raffle engine. Big winner energy. A headless, composable React component for
-              giveaways, raffles, and slot-machine UIs.
+              Random winner picker for React — and a set of free draw tools built on it. Spin a
+              wheel, pick a name, roll a number. Headless, typed, MIT.
             </p>
           </div>
 
@@ -73,6 +76,24 @@ export function SiteFooter() {
                   >
                     {l.label}
                   </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <ColHead>Tools</ColHead>
+            <ul className="grid list-none gap-2 p-0">
+              <li>
+                <Link href="/tools" className="transition-colors hover:text-burgundy">
+                  All tools
+                </Link>
+              </li>
+              {TOOL_LINKS.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className="transition-colors hover:text-burgundy">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -109,7 +130,9 @@ export function SiteFooter() {
           <span>
             MIT licensed · Built by <a href="https://github.com/kirilinsky">Kirilinsky</a>
           </span>
-          <span>v{pkg.version} · React {REACT_LABEL}</span>
+          <span>
+            v{pkg.version} · React {REACT_LABEL}
+          </span>
         </div>
       </Container>
     </footer>

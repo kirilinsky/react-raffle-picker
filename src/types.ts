@@ -96,3 +96,49 @@ export interface RafflePickCountdownProps {
   /** Render-prop for fully custom output. Receives remaining seconds. */
   children?: (remaining: number) => ReactNode
 }
+
+export interface RafflePickWheelProps {
+  /**
+   * Segment labels. Defaults to the root's pool — `items`, or the `min`/`max`
+   * range. Pass this only to relabel segments; the winner is still chosen by
+   * the root, and label `i` maps to pool position `i`.
+   */
+  segments?: string[]
+  /** Outer diameter in px. Default `320`. */
+  size?: number
+  /**
+   * Segment fill colors, cycled across segments. Defaults to a built-in
+   * 6-color palette. Adjacent segments never share a color as long as the
+   * palette length and segment count are not both even multiples.
+   */
+  colors?: string[]
+  /** Label text color. Default `'#fff'`. */
+  labelColor?: string
+  /**
+   * Hide labels above this segment count — past it they overlap into noise.
+   * Colors and the landing still work. Default `40`. Set `Infinity` to force.
+   */
+  maxLabels?: number
+  /** Landing animation duration in ms, from freeze to rest. Default `4200`. */
+  spinDuration?: number
+  /** Full turns added before the landing angle, for a longer spin. Default `4`. */
+  turns?: number
+  /** Idle/running rotation speed in ms per full turn. Default `1800`. */
+  spinInterval?: number
+  /** Pointer position on the rim. Default `'top'`. */
+  pointer?: 'top' | 'right'
+  /** Hide the built-in pointer triangle to render your own. */
+  hidePointer?: boolean
+  className?: string
+  style?: CSSProperties
+  /**
+   * Fires when the wheel physically comes to rest, with the winning value.
+   *
+   * Prefer this over the root's `onSelect` for anything the audience sees —
+   * a result banner, confetti, a sound. `onSelect` fires when the value is
+   * *committed*, which is the moment the landing animation **starts**, so
+   * reacting to it reveals the winner `spinDuration` ms before the wheel gets
+   * there.
+   */
+  onResult?: (value: RafflePickValue) => void
+}

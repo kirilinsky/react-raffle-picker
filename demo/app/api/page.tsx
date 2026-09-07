@@ -8,6 +8,7 @@ import {
   COUNTDOWN_PROPS,
   ROOT_PROPS,
   SLOTS_PROPS,
+  WHEEL_PROPS,
   TYPE_ROWS,
   VALUE_PROPS,
 } from '@/components/api-page/data'
@@ -29,6 +30,7 @@ const TOC = [
   { href: '#button', label: 'Button' },
   { href: '#countdown', label: 'Countdown' },
   { href: '#slots', label: 'Slots' },
+  { href: '#wheel', label: 'Wheel' },
   { href: '#context', label: 'Context' },
   { href: '#types', label: 'Types' },
 ]
@@ -125,6 +127,29 @@ export default function ApiPage() {
             stagger, left to right.
           </p>
           <PropsTable rows={SLOTS_PROPS} />
+        </ApiSection>
+
+        <ApiSection id="wheel" title="<RafflePick.Wheel>" kicker="consumer">
+          <p className="text-sm leading-relaxed text-ink-2">
+            Spinning wheel that lands on the value the root picks. Segments come from{' '}
+            <code className="rounded bg-bg-2 px-1 py-0.5 font-mono text-[0.9em]">items</code> or the{' '}
+            <code className="rounded bg-bg-2 px-1 py-0.5 font-mono text-[0.9em]">min</code>/
+            <code className="rounded bg-bg-2 px-1 py-0.5 font-mono text-[0.9em]">max</code> range.
+            Needs no stylesheet, and honours{' '}
+            <code className="rounded bg-bg-2 px-1 py-0.5 font-mono text-[0.9em]">
+              prefers-reduced-motion
+            </code>
+            .
+          </p>
+          <p className="text-sm leading-relaxed text-ink-2">
+            Reveal results from the wheel&apos;s{' '}
+            <code className="rounded bg-bg-2 px-1 py-0.5 font-mono text-[0.9em]">onResult</code>,
+            not the root&apos;s{' '}
+            <code className="rounded bg-bg-2 px-1 py-0.5 font-mono text-[0.9em]">onSelect</code>:
+            the root commits the winner when it freezes, which is the moment the landing animation{' '}
+            <em>starts</em>.
+          </p>
+          <PropsTable rows={WHEEL_PROPS} />
         </ApiSection>
 
         <ApiSection id="context" title="useRaffleContext()" kicker="escape hatch">

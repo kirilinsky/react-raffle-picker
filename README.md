@@ -180,6 +180,36 @@ Independent multi-reel slot machine. Each reel ticks on its own and stops with a
 | `onResult`                                         | `(joined: string) => void` | —              | Fires when the last reel lands.              |
 | `className`, `slotClassName`, `style`, `slotStyle` | various                    | —              | Style hooks.                                 |
 
+### `<RafflePick.Wheel>`
+
+Spinning wheel that lands on the value the root picks. Segments come from `items`, or from the `min`/`max` range in numeric mode.
+
+Needs no stylesheet — the geometry is inline SVG, rotation runs on `requestAnimationFrame`, and the landing is a single CSS transition, so nothing re-renders mid-spin. Respects `prefers-reduced-motion` by jumping straight to the result.
+
+> **Reveal on `onResult`, not `onSelect`.** The root commits the winner the instant it freezes, which is when the wheel *starts* its landing. Firing confetti or a result banner from the root's `onSelect` shows the answer `spinDuration` ms before the wheel gets there.
+
+| Prop            | Type                       | Default          | Notes                                                                                        |
+| --------------- | -------------------------- | ---------------- | -------------------------------------------------------------------------------------------- |
+| `segments`      | `string[]`                 | root pool        | Relabel segments. The winner is still chosen by the root; label `i` maps to pool position `i`. |
+| `size`          | `number`                   | `320`            | Outer diameter, px.                                                                          |
+| `colors`        | `string[]`                 | 6-color palette  | Segment fills, cycled.                                                                       |
+| `labelColor`    | `string`                   | `'#fff'`         | Label text color.                                                                            |
+| `maxLabels`     | `number`                   | `40`             | Past this many segments labels are hidden — they overlap into noise. Segments still work.     |
+| `spinDuration`  | `number` (ms)              | `4200`           | Landing animation length, from freeze to rest.                                                |
+| `turns`         | `number`                   | `4`              | Extra full revolutions before the landing angle.                                              |
+| `spinInterval`  | `number` (ms per turn)     | `1800`           | Free-spin speed while running.                                                                |
+| `pointer`       | `'top' \| 'right'`         | `'top'`          | Where the pointer sits on the rim.                                                            |
+| `hidePointer`   | `boolean`                  | `false`          | Drop the built-in triangle to render your own.                                                |
+| `onResult`      | `(value) => void`          | —                | Fires when the wheel comes to rest.                                                           |
+| `className`, `style` | various               | —                | Style hooks.                                                                                  |
+
+```tsx
+<RafflePick items={['Alice', 'Bob', 'Carol']} autoStart={false}>
+  <RafflePick.Wheel size={340} onResult={(winner) => celebrate(winner)} />
+  <RafflePick.Button startLabel="Spin" stopLabel="Stop" />
+</RafflePick>
+```
+
 ## Recipes
 
 ### Inline chip in a sentence

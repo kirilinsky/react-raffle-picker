@@ -4,6 +4,7 @@ export {
   RafflePickButton,
   RafflePickCountdown,
   RafflePickSlots,
+  RafflePickWheel,
   useRaffleContext,
   RaffleContext,
 } from './components/RafflePick'
@@ -16,4 +17,5 @@ export type {
   RafflePickButtonProps,
   RafflePickCountdownProps,
   RafflePickSlotsProps,
+  RafflePickWheelProps,
 } from './types'

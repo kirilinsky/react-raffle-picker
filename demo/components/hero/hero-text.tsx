@@ -25,14 +25,24 @@ export function HeroText() {
         reels, four animations and countdown auto-freeze.
       </p>
 
-      <div className="mt-4 flex flex-wrap justify-center gap-3.5">
+      <div className="mt-6 flex flex-wrap justify-center gap-3.5">
+        <Link
+          href="/tools"
+          className="inline-flex items-center justify-center gap-2 rounded-3 bg-burgundy px-[22px] py-3 text-sm font-semibold text-gold-light transition-colors hover:bg-burgundy-deep"
+        >
+          Just run a draw →
+        </Link>
         <Link
           href="/playground"
           className="inline-flex items-center justify-center gap-2 rounded-3 border border-line-2 px-[18px] py-3 text-sm font-semibold text-ink transition-colors hover:bg-bg-2"
         >
-          Open playground →
+          Open playground
         </Link>
       </div>
+
+      <p className="mt-3 font-mono text-xs text-ink-3">
+        No install needed for the tools — spin a wheel, pick a name, roll a number.
+      </p>
 
       <div className="mt-6 flex flex-wrap justify-center gap-3 font-mono text-xs text-ink-3">
         <span>~3.4 KB gzip</span>
