@@ -1,6 +1,6 @@
 {
   "name": "react-raffle-picker",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "React random picker: draw a random winner or number with slot-machine, reel and countdown animations. Headless, typed, zero-dependency.",
   "type": "module",
   "publishConfig": {
