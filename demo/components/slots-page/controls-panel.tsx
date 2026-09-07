@@ -7,12 +7,7 @@ import {
   SliderField,
   ToggleField,
 } from '../playground/fields'
-import {
-  DEFAULT_SLOTS_STATE,
-  PRESET_CHARS,
-  type SlotsPreset,
-  type SlotsState,
-} from './types'
+import { DEFAULT_SLOTS_STATE, PRESET_CHARS, type SlotsPreset, type SlotsState } from './types'
 
 const PRESETS: ReadonlyArray<SlotsPreset> = ['digits', 'symbols', 'letters', 'custom']
 
@@ -30,7 +25,12 @@ export function SlotsControlsPanel({
   return (
     <aside className="flex flex-col gap-6 self-start rounded-3 border border-line bg-bg-card p-6 lg:sticky lg:top-20">
       <ControlGroup label="Charset">
-        <SelectField<SlotsPreset> label="Preset" value={state.preset} onChange={(v) => set('preset', v)} options={PRESETS} />
+        <SelectField<SlotsPreset>
+          label="Preset"
+          value={state.preset}
+          onChange={(v) => set('preset', v)}
+          options={PRESETS}
+        />
       </ControlGroup>
 
       {state.preset === 'custom' && (

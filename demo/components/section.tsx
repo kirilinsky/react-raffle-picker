@@ -6,9 +6,9 @@ type SectionSpace = 'sm' | 'md' | 'lg'
 type SectionTone = 'default' | 'card' | 'ink'
 
 const spaceClasses: Record<SectionSpace, string> = {
-  sm: 'py-8',
-  md: 'py-16',
-  lg: 'py-24',
+  sm: 'py-7',
+  md: 'py-10',
+  lg: 'py-14',
 }
 
 const toneClasses: Record<SectionTone, string> = {

@@ -3,18 +3,10 @@
 import { useId } from 'react'
 import type { ReactNode } from 'react'
 
-export function ControlGroup({
-  label,
-  children,
-}: {
-  label: string
-  children: ReactNode
-}) {
+export function ControlGroup({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
-        {label}
-      </span>
+      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">{label}</span>
       {children}
     </div>
   )
@@ -35,10 +27,7 @@ export function NumberField({
   const id = useId()
   return (
     <div className="flex flex-col gap-1">
-      <label
-        htmlFor={id}
-        className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3"
-      >
+      <label htmlFor={id} className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
         {label}
       </label>
       <input
@@ -69,10 +58,7 @@ export function TextArea({
   const id = useId()
   return (
     <div className="flex flex-col gap-1">
-      <label
-        htmlFor={id}
-        className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3"
-      >
+      <label htmlFor={id} className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
         {label}
       </label>
       <textarea
@@ -113,9 +99,7 @@ export function SliderField({
         >
           {label}
         </label>
-        <span className="font-mono text-sm text-burgundy">
-          {display ?? value}
-        </span>
+        <span className="font-mono text-sm text-burgundy">{display ?? value}</span>
       </div>
       <input
         id={id}
@@ -145,10 +129,7 @@ export function SelectField<T extends string>({
   const id = useId()
   return (
     <div className="flex flex-col gap-1">
-      <label
-        htmlFor={id}
-        className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3"
-      >
+      <label htmlFor={id} className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
         {label}
       </label>
       <select
@@ -179,10 +160,7 @@ export function ToggleField({
   const id = useId()
   return (
     <div className="flex items-center justify-between">
-      <label
-        htmlFor={id}
-        className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3"
-      >
+      <label htmlFor={id} className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
         {label}
       </label>
       <button
@@ -222,9 +200,7 @@ export function Segmented<T extends string>({
             type="button"
             onClick={() => onChange(o.value)}
             className={`flex-1 rounded-2 px-3 py-2 font-mono text-xs uppercase tracking-wider transition-colors ${
-              active
-                ? 'bg-burgundy text-gold-light'
-                : 'text-ink-2 hover:bg-line'
+              active ? 'bg-burgundy text-gold-light' : 'text-ink-2 hover:bg-line'
             }`}
           >
             {o.label}

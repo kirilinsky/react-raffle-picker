@@ -81,14 +81,15 @@ export function OrderTool() {
               className="text-center font-display text-[clamp(38px,9vw,96px)] font-bold leading-[1.05] tracking-[-0.02em] text-burgundy"
             />
 
-            <CountdownStage setting={state} />
-
-            <RafflePick.Button
-              startLabel={order.length === 0 ? 'Draw first' : 'Draw next'}
-              stopLabel="Stop"
-              waitLabel="…"
-              className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
-            />
+            <div className="flex items-center justify-center gap-4">
+              <RafflePick.Button
+                startLabel={order.length === 0 ? 'Draw first' : 'Draw next'}
+                stopLabel="Stop"
+                waitLabel="…"
+                className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
+              />
+              <CountdownStage setting={state} />
+            </div>
 
             <RoundStatus drawn={order.length} total={items.length} onReset={reset} />
 
@@ -107,7 +108,7 @@ export function OrderTool() {
             )}
           </RafflePick>
         ) : (
-          <p className="py-16 text-center text-ink-3">Add at least two people to draw an order.</p>
+          <p className="py-11 text-center text-ink-3">Add at least two people to draw an order.</p>
         )
       }
       controls={

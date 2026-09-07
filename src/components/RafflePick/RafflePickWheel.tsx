@@ -241,24 +241,18 @@ export function RafflePickWheel({
       ? {
           position: 'absolute',
           top: '50%',
-          right: -2,
-          width: 0,
-          height: 0,
+          right: '-2%',
+          width: '10%',
+          height: '14%',
           transform: 'translateY(-50%)',
-          borderTop: `${size * 0.045}px solid transparent`,
-          borderBottom: `${size * 0.045}px solid transparent`,
-          borderRight: `${size * 0.09}px solid currentColor`,
         }
       : {
           position: 'absolute',
           left: '50%',
-          top: -2,
-          width: 0,
-          height: 0,
+          top: '-2%',
+          width: '14%',
+          height: '10%',
           transform: 'translateX(-50%)',
-          borderLeft: `${size * 0.045}px solid transparent`,
-          borderRight: `${size * 0.045}px solid transparent`,
-          borderTop: `${size * 0.09}px solid currentColor`,
         }
 
   return (
@@ -271,59 +265,88 @@ export function RafflePickWheel({
         lineHeight: 0,
         ...style,
         width: size,
-        height: size,
+        maxWidth: '100%',
+        aspectRatio: '1 / 1',
       }}
       data-phase={phase}
       data-pointer={pointer}
       data-resting=""
     >
-      <svg
-        ref={wheelRef}
-        className="rrp-wheel__disc"
-        style={{ display: 'block', transformOrigin: '50% 50%', willChange: 'transform' }}
-        viewBox={`0 0 ${VIEWBOX} ${VIEWBOX}`}
-        width={size}
-        height={size}
-        role="img"
-        aria-label={`Wheel with ${safeCount} segments`}
+      {/* The disc is a square SVG under a rotation, so its layout box grows to
+          side x sqrt(2) at 45 degrees and pushes the page into a sideways
+          scroll. The drawn wheel is the inscribed circle, so clipping to a
+          circle hides only empty corners and keeps the box honest. */}
+      <span
+        style={{
+          position: 'absolute',
+          inset: 0,
+          overflow: 'hidden',
+          borderRadius: '50%',
+        }}
       >
-        {safeCount === 1 ? (
-          <circle cx={CENTER} cy={CENTER} r={RADIUS} fill={paths[0].fill} />
-        ) : (
-          paths.map((p, i) => (
-            <path key={i} d={p.d} fill={p.fill} stroke="rgba(0,0,0,0.14)" strokeWidth={0.3} />
-          ))
-        )}
+        <svg
+          ref={wheelRef}
+          className="rrp-wheel__disc"
+          style={{
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            transformOrigin: '50% 50%',
+            willChange: 'transform',
+          }}
+          viewBox={`0 0 ${VIEWBOX} ${VIEWBOX}`}
+          role="img"
+          aria-label={`Wheel with ${safeCount} segments`}
+        >
+          {safeCount === 1 ? (
+            <circle cx={CENTER} cy={CENTER} r={RADIUS} fill={paths[0].fill} />
+          ) : (
+            paths.map((p, i) => (
+              <path key={i} d={p.d} fill={p.fill} stroke="rgba(0,0,0,0.14)" strokeWidth={0.3} />
+            ))
+          )}
 
-        {showLabels &&
-          paths.map((p, i) => {
-            const pt = rimPoint(p.mid, LABEL_RADIUS)
-            // Radial text points outward at `mid - 90`, which reads left-to-right
-            // only while that angle stays within a quarter turn of horizontal.
-            // Past the 180° mark it would render upside-down, so flip it.
-            const flip = p.mid > 180
-            const rotate = flip ? p.mid + 90 : p.mid - 90
-            return (
-              <text
-                key={i}
-                x={pt.x}
-                y={pt.y}
-                fill={labelColor}
-                fontSize={fontSize}
-                fontWeight={600}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                transform={`rotate(${rotate} ${pt.x} ${pt.y})`}
-                style={{ pointerEvents: 'none', userSelect: 'none' }}
-              >
-                {labels[i]}
-              </text>
-            )
-          })}
-      </svg>
+          {showLabels &&
+            paths.map((p, i) => {
+              const pt = rimPoint(p.mid, LABEL_RADIUS)
+              // Radial text points outward at `mid - 90`, which reads left-to-right
+              // only while that angle stays within a quarter turn of horizontal.
+              // Past the 180° mark it would render upside-down, so flip it.
+              const flip = p.mid > 180
+              const rotate = flip ? p.mid + 90 : p.mid - 90
+              return (
+                <text
+                  key={i}
+                  x={pt.x}
+                  y={pt.y}
+                  fill={labelColor}
+                  fontSize={fontSize}
+                  fontWeight={600}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  transform={`rotate(${rotate} ${pt.x} ${pt.y})`}
+                  style={{ pointerEvents: 'none', userSelect: 'none' }}
+                >
+                  {labels[i]}
+                </text>
+              )
+            })}
+        </svg>
+      </span>
 
       {!hidePointer && (
-        <span className="rrp-wheel__pointer" style={pointerStyle} aria-hidden="true" />
+        <svg
+          className="rrp-wheel__pointer"
+          style={pointerStyle}
+          viewBox="0 0 10 10"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <polygon
+            points={pointer === 'right' ? '10,0 10,10 0,5' : '0,0 10,0 5,10'}
+            fill="currentColor"
+          />
+        </svg>
       )}
 
       <span

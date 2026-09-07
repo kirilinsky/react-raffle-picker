@@ -38,7 +38,7 @@ export function AnimationsPreviewStage({ state }: { state: AnimationsState }) {
               </span>
               <RafflePick.Value
                 animation={kind}
-                className="font-display text-[clamp(32px,5vw,56px)] leading-none tabular-nums text-burgundy"
+                className="font-display text-[clamp(27px,3.4vw,40px)] leading-none tabular-nums text-burgundy"
               />
             </div>
           ))}

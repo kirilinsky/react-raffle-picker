@@ -16,14 +16,14 @@ export const metadata: Metadata = pageMetadata({
 
 export default function UseCasesPage() {
   return (
-    <section className="py-16">
+    <section className="py-11">
       <Container className="max-w-[1240px]">
-        <header className="mb-10 max-w-[720px]">
+        <header className="mb-7 max-w-[720px]">
           <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-ink-3">Use cases</p>
-          <h1 className="mb-4 font-display text-[clamp(32px,5vw,56px)] font-bold tracking-[-0.02em] leading-[1.05]">
+          <h1 className="mb-4 font-display text-[clamp(27px,3.4vw,40px)] font-bold tracking-[-0.02em] leading-[1.05]">
             Ready-made, not roll-your-own.
           </h1>
-          <p className="text-balance text-ink-2 text-[clamp(16px,1.6vw,19px)] leading-relaxed">
+          <p className="text-balance text-ink-2 text-[clamp(15px,1.15vw,17px)] leading-relaxed">
             Paste names, hit a button. Built for the moment you actually need this — mid-stream,
             mid-call, no setup.
           </p>

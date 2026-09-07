@@ -44,14 +44,14 @@ export const metadata: Metadata = pageMetadata({
 
 export default function ApiPage() {
   return (
-    <section className="py-16">
+    <section className="py-11">
       <Container className="max-w-[880px]">
         <header className="mb-8">
           <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-ink-3">API</p>
-          <h1 className="mb-4 font-display text-[clamp(32px,5vw,56px)] font-bold tracking-[-0.02em] leading-[1.05]">
+          <h1 className="mb-4 font-display text-[clamp(27px,3.4vw,40px)] font-bold tracking-[-0.02em] leading-[1.05]">
             Every prop, one page.
           </h1>
-          <p className="text-balance text-ink-2 text-[clamp(16px,1.6vw,19px)] leading-relaxed">
+          <p className="text-balance text-ink-2 text-[clamp(15px,1.15vw,17px)] leading-relaxed">
             This is the flat reference — everything the compound API exposes, no clicking through
             tabs. For a live, interactive version of every prop, use the{' '}
             <a
@@ -73,7 +73,7 @@ export default function ApiPage() {
           </p>
         </header>
 
-        <nav className="mb-10 flex flex-wrap gap-2 border-y border-line py-4">
+        <nav className="mb-7 flex flex-wrap gap-2 border-y border-line py-4">
           {TOC.map((t) => (
             <a
               key={t.href}
@@ -85,7 +85,7 @@ export default function ApiPage() {
           ))}
         </nav>
 
-        <div className="mb-10">
+        <div className="mb-7">
           <CodeBlock code={QUICKSTART} />
         </div>
 
@@ -167,7 +167,7 @@ export default function ApiPage() {
           <PropsTable rows={TYPE_ROWS} />
         </ApiSection>
 
-        <p className="mt-10 border-t border-line pt-8 text-sm text-ink-2">
+        <p className="mt-8 border-t border-line pt-8 text-sm text-ink-2">
           Full prop docs, recipes, and CSS custom properties live in the{' '}
           <a
             href="https://github.com/kirilinsky/react-raffle-picker#readme"

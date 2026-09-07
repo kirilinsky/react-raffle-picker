@@ -50,14 +50,15 @@ export function NamePickerTool() {
                 className="text-center font-display text-[clamp(44px,11vw,120px)] font-bold leading-[1.05] tracking-[-0.02em] text-burgundy"
               />
 
-              <CountdownStage setting={state} />
-
-              <RafflePick.Button
-                startLabel="Draw a name"
-                stopLabel="Stop"
-                waitLabel="…"
-                className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
-              />
+              <div className="flex items-center justify-center gap-4">
+                <RafflePick.Button
+                  startLabel="Draw a name"
+                  stopLabel="Stop"
+                  waitLabel="…"
+                  className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
+                />
+                <CountdownStage setting={state} />
+              </div>
 
               <WinnersList
                 winners={winners}
@@ -68,7 +69,7 @@ export function NamePickerTool() {
               />
             </RafflePick>
           ) : (
-            <p className="py-16 text-center text-ink-3">Add at least two names to draw.</p>
+            <p className="py-11 text-center text-ink-3">Add at least two names to draw.</p>
           )}
         </>
       }

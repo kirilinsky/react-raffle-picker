@@ -34,10 +34,7 @@ const makeShards = (count: number): Shard[] =>
 
 export function ConfettiBurst({ trigger }: { trigger: number }) {
   const [active, setActive] = useState(false)
-  const shards = useMemo<Shard[]>(
-    () => (active ? makeShards(80) : []),
-    [active, trigger]
-  )
+  const shards = useMemo<Shard[]>(() => (active ? makeShards(80) : []), [active, trigger])
 
   useEffect(() => {
     if (!trigger) return

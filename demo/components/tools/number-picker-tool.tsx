@@ -73,14 +73,15 @@ export function NumberPickerTool() {
               className="font-display text-[clamp(64px,17vw,180px)] font-bold leading-none tracking-[-0.03em] text-burgundy tabular-nums"
             />
 
-            <CountdownStage setting={state} />
-
-            <RafflePick.Button
-              startLabel="Roll"
-              stopLabel="Stop"
-              waitLabel="…"
-              className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
-            />
+            <div className="flex items-center justify-center gap-4">
+              <RafflePick.Button
+                startLabel="Roll"
+                stopLabel="Stop"
+                waitLabel="…"
+                className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
+              />
+              <CountdownStage setting={state} />
+            </div>
 
             <WinnersList
               winners={winners}

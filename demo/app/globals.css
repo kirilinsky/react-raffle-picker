@@ -5,47 +5,49 @@
 :root {
   color-scheme: light;
 
-  /* Surfaces */
-  --bg: #f4ede0;
-  --bg-2: #ebe1cc;
-  --bg-card: #fffaf0;
+  /* Surfaces — near-white with a trace of warmth, not cream. */
+  --bg: #fbfbf9;
+  --bg-2: #f2f2ef;
+  --bg-card: #ffffff;
 
   /* Text */
-  --ink: #1a1410;
-  --ink-2: #4a3f33;
-  --ink-3: #8a7a66;
+  --ink: #15161a;
+  --ink-2: #55575f;
+  --ink-3: #686a72;
 
   /* Lines */
-  --line: #d8ccb4;
-  --line-2: #c5b794;
+  --line: #e7e7e3;
+  --line-2: #d6d6d1;
 
-  /* Brand */
-  --burgundy: #7c1d29;
-  --burgundy-deep: #4a0f18;
-  --burgundy-light: #8a2230;
+  /* Brand — a present-day red rather than a vintage burgundy. Variable names
+     kept so the ~200 utility classes referencing them need no edits. */
+  --burgundy: #cf2436;
+  --burgundy-deep: #a3182a;
+  --burgundy-light: #e04052;
 
-  /* Accent */
-  --gold: #d4a04a;
-  --gold-deep: #a87a2c;
-  --gold-light: #ecc878;
+  /* Accent — amber, now used sparingly. `--gold-light` reads as the warm
+     off-white used for text on dark surfaces. */
+  --gold: #e5a33c;
+  --gold-deep: #96640f;
+  --gold-light: #fdf6ec;
 
   /* Support */
-  --green: #3d6b4f;
-  --green-light: #5a8a6b;
+  --green: #12855a;
+  --green-light: #2ba372;
   --react: #2c6e91;
 
   /* Radii */
   --r-1: 4px;
-  --r-2: 8px;
-  --r-3: 12px;
-  --r-4: 16px;
-  --r-5: 24px;
+  --r-2: 6px;
+  --r-3: 10px;
+  --r-4: 14px;
+  --r-5: 18px;
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px #4a0f1814, 0 1px 2px #a87a2c1f;
-  --shadow-md: 0 12px 28px #4a0f181f, 0 4px 10px #a87a2c24;
-  --shadow-lg: 0 24px 56px #4a0f1829, 0 10px 24px #a87a2c2e;
-  --shadow-inset: inset 0 1px 0 #fffaf0cc, inset 0 -2px 0 #a87a2c33;
+  --shadow-sm: 0 1px 2px #15161a0a, 0 1px 3px #15161a0f;
+  --shadow-md: 0 4px 12px #15161a12, 0 2px 4px #15161a0a;
+  --shadow-lg: 0 12px 32px #15161a1a, 0 4px 10px #15161a0f;
+  --shadow-inset: inset 0 1px 0 #ffffff99;
 }
 
 body {
@@ -116,29 +118,21 @@ body {
   }
 }
 
-/* Idle "breathe" — a soft gold halo pulse inviting the pull, off once running/frozen. */
+/* Idle cue for the hero machine — a quiet lift, not a casino halo. */
 @keyframes cabinet-glow {
   0%,
   100% {
-    box-shadow:
-      0 18px 50px rgba(60, 15, 25, 0.45),
-      0 4px 12px rgba(0, 0, 0, 0.3),
-      inset 0 2px 0 rgba(255, 255, 255, 0.15),
-      inset 0 -4px 12px rgba(0, 0, 0, 0.25),
-      0 0 0 rgba(212, 160, 74, 0);
+    box-shadow: 0 12px 32px #15161a1a;
   }
   50% {
     box-shadow:
-      0 18px 50px rgba(60, 15, 25, 0.45),
-      0 4px 12px rgba(0, 0, 0, 0.3),
-      inset 0 2px 0 rgba(255, 255, 255, 0.15),
-      inset 0 -4px 12px rgba(0, 0, 0, 0.25),
-      0 0 34px 7px rgba(212, 160, 74, 0.4);
+      0 12px 32px #15161a1a,
+      0 0 0 4px #cf24361a;
   }
 }
 
 .cabinet-idle-glow[data-state='idle'] {
-  animation: cabinet-glow 2600ms ease-in-out infinite;
+  animation: cabinet-glow 2800ms ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

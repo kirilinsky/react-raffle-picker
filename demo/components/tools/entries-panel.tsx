@@ -105,11 +105,15 @@ export function WinnersList({
   onReset?: () => void
   label?: string
 }) {
-  if (winners.length === 0) return null
-
+  // Always rendered: appearing on the first win would otherwise push the page
+  // taller mid-draw.
   return (
-    <div className="flex w-full max-w-[640px] flex-wrap items-center justify-center gap-2">
-      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">{label}:</span>
+    <div className="flex min-h-8 w-full max-w-[640px] flex-wrap items-center justify-center gap-2">
+      {winners.length > 0 && (
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
+          {label}:
+        </span>
+      )}
       {winners.map((w, i) => (
         <span
           key={`${w}-${i}`}
@@ -118,7 +122,7 @@ export function WinnersList({
           {i + 1}. {w}
         </span>
       ))}
-      {onReset && (
+      {onReset && winners.length > 0 && (
         <button
           type="button"
           onClick={onReset}

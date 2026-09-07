@@ -15,24 +15,17 @@ export const COUNTDOWN_DEFAULTS: CountdownSetting = {
 const PRESETS = [3, 5, 10, 15, 30]
 
 /**
- * Renders nothing unless the countdown is on. `<RafflePick.Countdown>` only
- * mounts while the root is running and freezes it when the timer expires, so a
- * draw can start on one click and stop itself — no second click, hands free
- * while the host talks over it.
+ * `<RafflePick.Countdown>` only mounts while the root is running, so dropping it
+ * straight into a column makes the page grow and shrink on every draw. The slot
+ * below reserves its space for the whole round and sits beside the button, so
+ * the ring appears and leaves without moving anything.
  */
-export function CountdownStage({
-  setting,
-  className,
-}: {
-  setting: CountdownSetting
-  className?: string
-}) {
+export function CountdownStage({ setting }: { setting: CountdownSetting }) {
   if (!setting.countdown) return null
   return (
-    <RafflePick.Countdown
-      seconds={setting.countdownSeconds}
-      className={className ?? 'text-burgundy'}
-    />
+    <div className="grid h-16 w-16 shrink-0 place-items-center">
+      <RafflePick.Countdown seconds={setting.countdownSeconds} className="countdown-ring" />
+    </div>
   )
 }
 

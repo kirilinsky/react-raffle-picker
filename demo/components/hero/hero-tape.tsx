@@ -5,13 +5,13 @@ export function HeroTape() {
   return (
     <div
       aria-hidden="true"
-      className="relative mt-14 overflow-hidden border-y-4 border-gold bg-ink py-3.5 text-gold-light"
+      className="relative mt-10 overflow-hidden border-y border-line bg-bg-2 py-2.5 text-ink-3"
     >
       <div className="flex whitespace-nowrap will-change-transform animate-marquee">
-        <span className="flex-shrink-0 pr-8 font-display text-[22px] uppercase tracking-[0.18em]">
+        <span className="flex-shrink-0 pr-8 font-mono text-[12px] uppercase tracking-[0.2em]">
           {TAPE_TEXT}
         </span>
-        <span className="flex-shrink-0 pr-8 font-display text-[22px] uppercase tracking-[0.18em]">
+        <span className="flex-shrink-0 pr-8 font-mono text-[12px] uppercase tracking-[0.2em]">
           {TAPE_TEXT}
         </span>
       </div>

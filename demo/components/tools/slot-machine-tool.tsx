@@ -58,23 +58,27 @@ export function SlotMachineTool() {
                 />
               </div>
 
-              {result && (
-                <p className="font-mono text-sm text-ink-3">
-                  Last spin: <span className="text-ink">{result}</span>
-                </p>
-              )}
+              {/* Reserved row — showing it only after a spin would grow the page. */}
+              <p className="min-h-5 font-mono text-sm text-ink-3">
+                {result && (
+                  <>
+                    Last spin: <span className="text-ink">{result}</span>
+                  </>
+                )}
+              </p>
 
-              <CountdownStage setting={state} />
-
-              <RafflePick.Button
-                startLabel="Spin"
-                stopLabel="Stop"
-                waitLabel="…"
-                className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
-              />
+              <div className="flex items-center justify-center gap-4">
+                <RafflePick.Button
+                  startLabel="Spin"
+                  stopLabel="Stop"
+                  waitLabel="…"
+                  className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
+                />
+                <CountdownStage setting={state} />
+              </div>
             </RafflePick>
           ) : (
-            <p className="py-16 text-center text-ink-3">Add at least two symbols to spin.</p>
+            <p className="py-11 text-center text-ink-3">Add at least two symbols to spin.</p>
           )}
         </>
       }

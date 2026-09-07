@@ -46,14 +46,14 @@ const FEATURES: Array<{ title: string; pill: string; body: string }> = [
 export function FeaturesGrid() {
   return (
     <Section space="lg">
-      <div className="mx-auto mb-12 max-w-[720px] text-center">
+      <div className="mx-auto mb-8 max-w-[720px] text-center">
         <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-ink-3">
           What&apos;s inside
         </p>
-        <h2 className="mb-4 font-display font-bold tracking-[-0.02em] text-[clamp(32px,5vw,56px)] leading-[1.05]">
+        <h2 className="mb-4 font-display font-bold tracking-[-0.02em] text-[clamp(27px,3.4vw,40px)] leading-[1.05]">
           One root, many faces.
         </h2>
-        <p className="text-balance text-ink-2 text-[clamp(16px,1.6vw,19px)] leading-relaxed">
+        <p className="text-balance text-ink-2 text-[clamp(15px,1.15vw,17px)] leading-relaxed">
           A compound component you compose, not a widget you configure. Pick the
           pieces you need, drop them where you want them, style them like any
           other DOM.

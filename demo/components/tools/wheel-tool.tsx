@@ -14,7 +14,7 @@ const DEFAULTS = {
   noRepeat: true,
 }
 
-const WHEEL_COLORS = ['#7c1d29', '#d4a04a', '#2f4858', '#a83b2c', '#ecc878', '#4a0f18']
+const WHEEL_COLORS = ['#cf2436', '#2f3540', '#e5a33c', '#8f1523', '#5b6673', '#c5842b']
 
 export function WheelTool() {
   const { state, setState, shareUrl } = useToolState('rrp-tool-wheel', DEFAULTS)
@@ -50,9 +50,9 @@ export function WheelTool() {
                 setLanding(true)
                 setWinner(null)
               }}
-              className="flex flex-col items-center gap-7"
+              className="flex w-full flex-col items-center gap-7"
             >
-              <div className="text-burgundy">
+              <div className="w-full max-w-[340px] text-ink">
                 <RafflePick.Wheel
                   size={340}
                   colors={WHEEL_COLORS}
@@ -67,8 +67,6 @@ export function WheelTool() {
                 />
               </div>
 
-              <CountdownStage setting={state} />
-
               <p
                 aria-live="polite"
                 className="min-h-[1.4em] font-display text-[clamp(26px,5vw,44px)] font-bold text-ink"
@@ -76,13 +74,16 @@ export function WheelTool() {
                 {landing ? '' : (winner ?? '')}
               </p>
 
-              <RafflePick.Button
-                startLabel="Spin"
-                stopLabel="Stop"
-                waitLabel="…"
-                disabled={landing}
-                className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
-              />
+              <div className="flex items-center justify-center gap-4">
+                <RafflePick.Button
+                  startLabel="Spin"
+                  stopLabel="Stop"
+                  waitLabel="…"
+                  disabled={landing}
+                  className="rounded-full bg-ink px-8 py-3.5 font-mono text-base text-gold-light transition-colors hover:bg-burgundy disabled:cursor-not-allowed disabled:opacity-40"
+                />
+                <CountdownStage setting={state} />
+              </div>
 
               <WinnersList
                 winners={winners}
@@ -94,7 +95,7 @@ export function WheelTool() {
               />
             </RafflePick>
           ) : (
-            <p className="py-16 text-center text-ink-3">Add at least two entries to spin.</p>
+            <p className="py-11 text-center text-ink-3">Add at least two entries to spin.</p>
           )}
         </>
       }

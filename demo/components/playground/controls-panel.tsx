@@ -11,13 +11,7 @@ import {
 } from './fields'
 import { DEFAULT_STATE, type AnimationKind, type PlaygroundState } from './types'
 
-const ANIMATIONS: ReadonlyArray<AnimationKind> = [
-  'none',
-  'roll',
-  'fade',
-  'blur',
-  'reel',
-]
+const ANIMATIONS: ReadonlyArray<AnimationKind> = ['none', 'roll', 'fade', 'blur', 'reel']
 
 export function ControlsPanel({
   state,
@@ -26,10 +20,7 @@ export function ControlsPanel({
   state: PlaygroundState
   onChange: (next: PlaygroundState) => void
 }) {
-  const set = <K extends keyof PlaygroundState>(
-    k: K,
-    v: PlaygroundState[K]
-  ) => {
+  const set = <K extends keyof PlaygroundState>(k: K, v: PlaygroundState[K]) => {
     onChange({ ...state, [k]: v })
   }
 
@@ -49,16 +40,8 @@ export function ControlsPanel({
       {state.mode === 'range' ? (
         <ControlGroup label="Range">
           <div className="grid grid-cols-2 gap-3">
-            <NumberField
-              label="Min"
-              value={state.min}
-              onChange={(n) => set('min', n)}
-            />
-            <NumberField
-              label="Max"
-              value={state.max}
-              onChange={(n) => set('max', n)}
-            />
+            <NumberField label="Min" value={state.min} onChange={(n) => set('min', n)} />
+            <NumberField label="Max" value={state.max} onChange={(n) => set('max', n)} />
           </div>
         </ControlGroup>
       ) : (
@@ -95,11 +78,7 @@ export function ControlsPanel({
         options={ANIMATIONS}
       />
 
-      <ToggleField
-        label="Inertia"
-        value={state.inertia}
-        onChange={(b) => set('inertia', b)}
-      />
+      <ToggleField label="Inertia" value={state.inertia} onChange={(b) => set('inertia', b)} />
 
       <ToggleField
         label="Autostart"

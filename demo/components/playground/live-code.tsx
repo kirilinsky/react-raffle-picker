@@ -68,7 +68,7 @@ export function LiveCode({ state }: { state: PlaygroundState }) {
           {copied ? '✓ copied' : 'Copy'}
         </button>
       </div>
-      <pre className="max-w-full overflow-x-auto bg-[#1c1814] p-4 font-mono text-[12px] leading-relaxed text-[#e8dfc8] sm:p-5 sm:text-[13px]">
+      <pre className="max-w-full overflow-x-auto bg-[#17181c] p-4 font-mono text-[12px] leading-relaxed text-[#e6e7ea] sm:p-5 sm:text-[13px]">
         <code>{code}</code>
       </pre>
     </div>

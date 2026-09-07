@@ -12,8 +12,8 @@ export function SlotLever({ pulled }: { pulled: boolean }) {
           pulled ? 'rotate-[68deg]' : 'hover:rotate-[6deg]',
         ].join(' ')}
       >
-        <span className="h-[38px] w-[38px] rounded-full border-2 border-ink bg-[radial-gradient(circle_at_30%_25%,#ff8a8a_0%,#c0263a_45%,#5a0a14_100%)] shadow-[0_3px_8px_rgba(0,0,0,0.45),inset_0_-4px_8px_rgba(0,0,0,0.35)] -mb-1 z-10 max-[600px]:h-[30px] max-[600px]:w-[30px]" />
-        <span className="h-[140px] w-3 rounded-full bg-gradient-to-b from-[#e8d8b8] via-[#c8a868] to-[#8a6830] shadow-[inset_2px_0_0_rgba(255,255,255,0.4),inset_-2px_0_0_rgba(0,0,0,0.3)] max-[600px]:h-[110px]" />
+        <span className="h-[38px] w-[38px] rounded-full border-2 border-ink bg-[radial-gradient(circle_at_30%_25%,#ff8a8a_0%,#cf2436_45%,#8f1523_100%)] shadow-[0_3px_8px_rgba(0,0,0,0.45),inset_0_-4px_8px_rgba(0,0,0,0.35)] -mb-1 z-10 max-[600px]:h-[30px] max-[600px]:w-[30px]" />
+        <span className="h-[140px] w-3 rounded-full bg-gradient-to-b from-[#dcdde1] via-[#b6b8bf] to-[#83858d] shadow-[inset_2px_0_0_rgba(255,255,255,0.4),inset_-2px_0_0_rgba(0,0,0,0.3)] max-[600px]:h-[110px]" />
       </span>
     </span>
   )

@@ -29,7 +29,7 @@ export function DecisionMaker() {
         >
           <RafflePick.Value
             animation="blur"
-            className="font-display text-[clamp(28px,4vw,40px)] font-bold text-burgundy"
+            className="font-display text-[clamp(24px,2.6vw,34px)] font-bold text-burgundy"
           />
           <RafflePick.Button
             startLabel="Decide"

@@ -7,25 +7,16 @@ export function HeroText() {
     <div className="flex flex-col items-center text-center">
       <HeroPill>npm i react-raffle-picker</HeroPill>
 
-      <h1 className="mt-5 text-balance font-display text-[clamp(44px,8vw,96px)] leading-[0.95] tracking-[-0.025em]">
+      <h1 className="mt-4 text-balance font-display text-[clamp(34px,5vw,58px)] leading-[1] tracking-[-0.025em]">
         Random winner picker for React.
       </h1>
 
-      <div className="my-12 inline-block pr-10 max-[600px]:pr-7">
-        <SlotCabinet />
-      </div>
-
-      <p className="my-2 text-balance font-display text-[clamp(22px,3.2vw,38px)] italic tracking-[-0.01em] text-burgundy">
-        React like you just won.
+      <p className="mt-4 max-w-[600px] text-balance text-ink-2 text-[clamp(15px,1.15vw,17px)] leading-relaxed">
+        A headless React component for giveaways, raffles and prize draws. Cycle names or numbers,
+        freeze on a winner, never draw the same one twice.
       </p>
 
-      <p className="mt-5 max-w-[640px] text-balance text-ink-2 text-[clamp(15px,1.5vw,18px)] leading-relaxed">
-        A headless React component for giveaways, raffles and prize draws. Cycle a list of names or
-        a number range, freeze on a winner, and never draw the same one twice — with slot-machine
-        reels, four animations and countdown auto-freeze.
-      </p>
-
-      <div className="mt-6 flex flex-wrap justify-center gap-3.5">
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
         <Link
           href="/tools"
           className="inline-flex items-center justify-center gap-2 rounded-3 bg-burgundy px-[22px] py-3 text-sm font-semibold text-gold-light transition-colors hover:bg-burgundy-deep"
@@ -43,6 +34,12 @@ export function HeroText() {
       <p className="mt-3 font-mono text-xs text-ink-3">
         No install needed for the tools — spin a wheel, pick a name, roll a number.
       </p>
+
+      {/* The machine is the demo, not the headline — it sits below the CTAs so
+          the first screen leads with something to do. */}
+      <div className="mt-9 inline-block pr-9 max-[600px]:pr-7">
+        <SlotCabinet />
+      </div>
 
       <div className="mt-6 flex flex-wrap justify-center gap-3 font-mono text-xs text-ink-3">
         <span>~3.4 KB gzip</span>

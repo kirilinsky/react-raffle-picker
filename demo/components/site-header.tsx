@@ -35,7 +35,7 @@ export function SiteHeader() {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-[rgba(244,237,224,0.85)] backdrop-blur-[12px]">
+    <header className="sticky top-0 z-50 border-b border-line bg-[color-mix(in_srgb,var(--bg)_85%,transparent)] backdrop-blur-[12px]">
       <div className="mx-auto flex h-16 max-w-[1240px] items-center gap-4 px-4 min-[820px]:px-6">
         <Link
           href="/"

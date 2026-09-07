@@ -68,13 +68,13 @@ export function ToolShell({
   const { active, toggle } = useFullscreen(stageRef)
 
   return (
-    <section className="py-10 sm:py-14">
+    <section className="py-10 sm:py-10">
       <Container className="max-w-[1100px]">
         <header className={active ? 'sr-only' : 'mb-8 max-w-[720px]'}>
-          <h1 className="mb-3 font-display text-[clamp(32px,5vw,52px)] font-bold leading-[1.05] tracking-[-0.02em]">
+          <h1 className="mb-3 font-display text-[clamp(27px,3.4vw,38px)] font-bold leading-[1.05] tracking-[-0.02em]">
             {heading}
           </h1>
-          <p className="text-balance text-ink-2 text-[clamp(15px,1.6vw,18px)] leading-relaxed">
+          <p className="text-balance text-ink-2 text-[clamp(15px,1.15vw,17px)] leading-relaxed">
             {intro}
           </p>
         </header>
@@ -85,7 +85,7 @@ export function ToolShell({
           className={
             active
               ? 'fixed inset-0 z-[100] flex flex-col items-center justify-center gap-8 bg-bg p-6'
-              : 'relative flex flex-col items-center justify-center gap-6 rounded-4 border border-line bg-bg-card px-4 py-10 sm:py-14'
+              : 'relative flex flex-col items-center justify-center gap-6 rounded-4 border border-line bg-bg-card px-4 py-10 sm:py-10'
           }
         >
           <button
@@ -124,7 +124,7 @@ export function ToolShell({
 
             {footer}
 
-            <p className="mt-10 border-t border-line pt-6 text-sm text-ink-3">
+            <p className="mt-8 border-t border-line pt-6 text-sm text-ink-3">
               Free, no sign-up, and your list never leaves your browser. Building something similar?{' '}
               <Link
                 href="/"
